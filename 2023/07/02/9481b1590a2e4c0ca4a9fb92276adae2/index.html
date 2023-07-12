@@ -6,18 +6,20 @@
   
   <title>hexo+github建github.io | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="安装hexo+连接github, 请看pdf, 来自B站教程 以下是如何将joplin文档通过joplin-blog这个插件发布  npm install -g joplin-blog, 安装joplin-blog 在hexo文件根目录下创建.joplin-blog.json, 并配置. 配置请看github 在当前目录下执行npx joplin-blog export, 自动将配置文件中对应标签">
+  <meta name="description" content="配置hexo+git安装hexo+连接github, 请看pdf, 来自B站教程 配置mami之后使用mami这个工具来进行将joplin格式的md文档转换到hexo支持的格式, 并上传到github.io mami的文档, 照着配置即可 配置完后文件夹结构应该如下所示  之后需要配置一下mami.config.ts这个文件 1234567891011121314151617import &amp;#12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo+github建github.io">
 <meta property="og:url" content="http://example.com/2023/07/02/9481b1590a2e4c0ca4a9fb92276adae2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="安装hexo+连接github, 请看pdf, 来自B站教程 以下是如何将joplin文档通过joplin-blog这个插件发布  npm install -g joplin-blog, 安装joplin-blog 在hexo文件根目录下创建.joplin-blog.json, 并配置. 配置请看github 在当前目录下执行npx joplin-blog export, 自动将配置文件中对应标签">
+<meta property="og:description" content="配置hexo+git安装hexo+连接github, 请看pdf, 来自B站教程 配置mami之后使用mami这个工具来进行将joplin格式的md文档转换到hexo支持的格式, 并上传到github.io mami的文档, 照着配置即可 配置完后文件夹结构应该如下所示  之后需要配置一下mami.config.ts这个文件 1234567891011121314151617import &amp;#12">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230712132029267.png">
 <meta property="article:published_time" content="2023-07-01T17:10:18.679Z">
-<meta property="article:modified_time" content="2023-07-11T14:36:09.616Z">
+<meta property="article:modified_time" content="2023-07-12T05:28:14.499Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="tutorial">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230712132029267.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -102,16 +104,17 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>安装hexo+连接github, 请看<a target="_blank" rel="noopener" href="https://b4night-resource-1312299157.cos.ap-nanjing.myqcloud.com/hexo%2Bgithub%20tutorial.pdf">pdf</a>, 来自B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Eg41157tL/?spm_id_from=333.1007.0.0&vd_source=206601f18ddc5959ab706d3c75f872e6">教程</a></p>
-<p>以下是如何将joplin文档通过joplin-blog这个插件发布</p>
-<ol>
-<li>npm install -g joplin-blog, 安装joplin-blog</li>
-<li>在hexo文件根目录下创建<code>.joplin-blog.json</code>, 并配置. 配置请看<a target="_blank" rel="noopener" href="https://github.com/rxliuli/joplin-blog">github</a></li>
-<li>在当前目录下执行<code>npx joplin-blog export</code>, 自动将配置文件中对应标签的文档载入到<code>/source/_posts/</code>文件夹中, 之后这些文档会被上传</li>
-<li><code>hexo g &amp; hexo d</code>. 自动上传到github</li>
-</ol>
-<p>可以通过一个脚本来执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /home/fc/Projects/b4night.github.io/webPage</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">路径需要改成你的hexo项目的路径</span></span><br><span class="line"></span><br><span class="line">npx joplin-blog export</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line"></span><br><span class="line">cd -</span><br></pre></td></tr></table></figure>
+        <h1 id="配置hexo-git"><a href="#配置hexo-git" class="headerlink" title="配置hexo+git"></a>配置hexo+git</h1><p>安装hexo+连接github, 请看<a target="_blank" rel="noopener" href="https://b4night-resource-1312299157.cos.ap-nanjing.myqcloud.com/hexo%2Bgithub%20tutorial.pdf">pdf</a>, 来自B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Eg41157tL/?spm_id_from=333.1007.0.0&vd_source=206601f18ddc5959ab706d3c75f872e6">教程</a></p>
+<h1 id="配置mami"><a href="#配置mami" class="headerlink" title="配置mami"></a>配置mami</h1><p>之后使用<code>mami</code>这个工具来进行将<code>joplin</code>格式的md文档转换到<code>hexo</code>支持的格式, 并上传到github.io</p>
+<p><code>mami</code>的<a target="_blank" rel="noopener" href="https://mami.rxliuli.com/">文档</a>, 照着配置即可</p>
+<p>配置完后文件夹结构应该如下所示</p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230712132029267.png" alt="image-20230712132029267"></p>
+<p>之后需要配置一下<code>mami.config.ts</code>这个文件</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;@mami/cli&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> joplin <span class="keyword">from</span> <span class="string">&#x27;@mami/plugin-joplin&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> hexo <span class="keyword">from</span> <span class="string">&#x27;@mami/plugin-hexo&#x27;</span></span><br><span class="line"></span><br><span class="line">__dirname = <span class="string">&quot;your project address&quot;</span>     <span class="comment">// project address</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">input</span>: [</span><br><span class="line">    joplin.<span class="title function_">input</span>(&#123;</span><br><span class="line">      <span class="attr">baseUrl</span>: <span class="string">&#x27;your url&#x27;</span>,</span><br><span class="line">      <span class="attr">token</span>: <span class="string">&#x27;your token&#x27;</span>,</span><br><span class="line">      <span class="attr">tag</span>: <span class="string">&#x27;your tag&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">output</span>: [hexo.<span class="title function_">output</span>(&#123; <span class="attr">root</span>: __dirname, <span class="attr">baseUrl</span>: <span class="string">&#x27;blog&#x27;</span> &#125;)],</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后在命令行中执行<code>pnpm run gen</code>即可</p>
+<h1 id="上传到github"><a href="#上传到github" class="headerlink" title="上传到github"></a>上传到github</h1><p>在<code>mami.config.ts</code>这个文件中的<code>__dirname</code>设置为你的博客的地址, 之后md文档就会自动被传输到<code>BlogAddress/source</code>这个目录下面</p>
+<h1 id="辅助脚本"><a href="#辅助脚本" class="headerlink" title="辅助脚本"></a>辅助脚本</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">cd /d D:\...\mami-starter	# mami的根目录</span><br><span class="line">call pnpm run gen</span><br><span class="line">cd /d blogAddress			# 博客地址</span><br><span class="line">call hexo g</span><br><span class="line">call hexo d</span><br><span class="line">echo Done</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
 
       
     </div>
