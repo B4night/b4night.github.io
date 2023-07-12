@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>vscode连接到linux+免密登录 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="下载软件首先在linux中下载openssh-server 1sudo apt install openssh-server  在vscode中下载完相关的插件 配置ssh插件 打开.ssh\config这个文件夹  从上往下分别是: 服务器的别名, ip, 登陆的用户名, 端口. 最后一个是用于免密登录的密钥 免密登录打开cmd, 输入ssh-keygen -t rsa -b 4096生成公钥和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode连接到linux+免密登录">
+<meta property="og:url" content="http://example.com/2023/01/17/aef4bfec1b4c41a29380e459e4d41095/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="下载软件首先在linux中下载openssh-server 1sudo apt install openssh-server  在vscode中下载完相关的插件 配置ssh插件 打开.ssh\config这个文件夹  从上往下分别是: 服务器的别名, ip, 登陆的用户名, 端口. 最后一个是用于免密登录的密钥 免密登录打开cmd, 输入ssh-keygen -t rsa -b 4096生成公钥和">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150723309.png">
+<meta property="og:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150804581.png">
+<meta property="og:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150937912.png">
+<meta property="article:published_time" content="2023-01-17T06:53:17.801Z">
+<meta property="article:modified_time" content="2023-04-08T05:50:41.494Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="tutorial">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150723309.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-aef4bfec1b4c41a29380e459e4d41095" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/17/aef4bfec1b4c41a29380e459e4d41095/" class="article-date">
+  <time class="dt-published" datetime="2023-01-17T06:53:17.801Z" itemprop="datePublished">2023-01-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      vscode连接到linux+免密登录
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h1><p>首先在linux中下载openssh-server</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>在vscode中下载完相关的插件</p>
+<h1 id="配置ssh插件"><a href="#配置ssh插件" class="headerlink" title="配置ssh插件"></a>配置ssh插件</h1><p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150723309.png" alt="image-20230117150723309"></p>
+<p>打开<code>.ssh\config</code>这个文件夹</p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150804581.png" alt="image-20230117150804581"></p>
+<p>从上往下分别是: 服务器的别名, ip, 登陆的用户名, 端口. 最后一个是用于免密登录的密钥</p>
+<h1 id="免密登录"><a href="#免密登录" class="headerlink" title="免密登录"></a>免密登录</h1><p>打开cmd, 输入<code>ssh-keygen -t rsa -b 4096</code>生成公钥和密钥</p>
+<p>生成的两把会在<code>C:\Users\userName\.ssh</code>中</p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150937912.png" alt="image-20230117150937912"></p>
+<p>将<code>id_rsa.pub</code>上传到服务器的<code>~/.ssh</code>文件夹下, 并改名为<code>authorized_keys</code></p>
+<p>在config中加上<code>IdentifyFile &quot;密钥地址&quot;</code>即可实现免密访问</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/17/aef4bfec1b4c41a29380e459e4d41095/" data-id="cljz93so40005yst8axocdte3" data-title="vscode连接到linux+免密登录" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/01/17/551de9c0ea134fcfa215cc2746c5b476/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          typora修改字体
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/07/03/bad6f5d9c82f4be8ab541b01f3077f91/">通过vlan使不同设备互联</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/">git通过ssh和github通信</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/02/9481b1590a2e4c0ca4a9fb92276adae2/">hexo+github建github.io</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/02/d90a42c1c8a94266b86e69b48a7384d4/">ubuntu22.04 Ulauncher在desktop按hotkey不显示</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/22/d6db786ef31c441989edc180c061b316/">linux换源</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

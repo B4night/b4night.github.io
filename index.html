@@ -73,12 +73,16 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-bad6f5d9c82f4be8ab541b01f3077f91" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/07/12/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-07-12T01:38:21.756Z" itemprop="datePublished">2023-07-12</time>
+    <a href="/2023/07/03/bad6f5d9c82f4be8ab541b01f3077f91/" class="article-date">
+  <time class="dt-published" datetime="2023-07-03T14:40:39.959Z" itemprop="datePublished">2023-07-03</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -87,7 +91,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/07/12/hello-world/">Hello World</a>
+      <a class="p-name article-title" href="/2023/07/03/bad6f5d9c82f4be8ab541b01f3077f91/">通过vlan使不同设备互联</a>
     </h1>
   
 
@@ -95,27 +99,510 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h1 id="pre-knowledge"><a href="#pre-knowledge" class="headerlink" title="pre-knowledge"></a>pre-knowledge</h1><p>在计算机网络中, 我们需要知道两个节点(host)如何互联.</p>
+<p>首先如果两个节点在同一个局域网中, 那么只要知道主机号就能互联了. 如果不在同一个局域网, 那么要使用IP地址来进行连接.</p>
+<p>但是现在host的IP地址大多为私有地址, 那么如何来让两个设备知道对方的位置呢?</p>
+<p>使用VLAN: 创建一个Virtual Local Area Network, 让两台设备认为它们处在同一个局域网之中, 那么就可以通过私有ip来进行访问了.</p>
+<h1 id="ZeroTier"><a href="#ZeroTier" class="headerlink" title="ZeroTier"></a>ZeroTier</h1><p>在这里使用ZeroTier来当我们的vlan工具. 由于流程比较简单, 网上资料众多, 为了不重复造轮子这里就简单描述下</p>
+<ol>
+<li>在ZeroTier官网注册账号, 注册一个网络, 得到网络号</li>
+<li>在需要加入vlan的设备上下载对应版本的ZeroTier, 通过第一步得到的网络号来加入这个网络</li>
+<li>在官网中网络的后台来配置加入vlan的设备</li>
+</ol>
+<h1 id="pad连接到linux主机"><a href="#pad连接到linux主机" class="headerlink" title="pad连接到linux主机"></a>pad连接到linux主机</h1><p>首先两个设备都需要开启ZeroTier</p>
+<p>然后在pad上使用termius, 输入ZeroTier上配置的linux主机的私有ip地址即可连接</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/12/hello-world/" data-id="cljz1z6lw0000gst89bb58jt2" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/07/03/bad6f5d9c82f4be8ab541b01f3077f91/" data-id="cljz93so6000ayst8e14a5u3s" data-title="通过vlan使不同设备互联" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-e6155c8fe28d481c983023a3f5d9d10c" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/" class="article-date">
+  <time class="dt-published" datetime="2023-07-03T09:11:30.343Z" itemprop="datePublished">2023-07-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/">git通过ssh和github通信</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>系统为<code>ubuntu22.04</code></p>
+<h1 id="ssh创建密钥"><a href="#ssh创建密钥" class="headerlink" title="ssh创建密钥"></a>ssh创建密钥</h1><p>terminal输入<code>ssh -keygen -t rsa -C &quot;your email&quot;</code>, 之后都默认回车即可</p>
+<p>执行完毕后可以在<code>~/.ssh/</code>中看到如下文件</p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703171627347.png" alt="image-20230703171627347"></p>
+<h1 id="将公钥上传至github"><a href="#将公钥上传至github" class="headerlink" title="将公钥上传至github"></a>将公钥上传至github</h1><p>github主页点击头像, 选择<code>setting</code></p>
+<p>在侧边栏找到<code>SSH and GPG keys</code>, 点击<code>New SSH key</code></p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703171824784.png" alt="image-20230703171824784"></p>
+<p>将<code>id_rsa.pub</code>中的公钥复制到<code>Key</code>中, <strong>注意公钥后面的邮箱不要复制</strong></p>
+<h1 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h1><p>首先设置用户名和邮箱, <strong>注意这里的邮箱和ssh -keygen里面的邮箱一样</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;your.email@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后通过ssh来git clone</p>
+<img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703172153060.png" alt="image-20230703172153060" style="zoom:50%;" />
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/" data-id="cljz93so9000kyst83bx61kfj" data-title="git通过ssh和github通信" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9481b1590a2e4c0ca4a9fb92276adae2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/02/9481b1590a2e4c0ca4a9fb92276adae2/" class="article-date">
+  <time class="dt-published" datetime="2023-07-01T17:10:18.679Z" itemprop="datePublished">2023-07-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/02/9481b1590a2e4c0ca4a9fb92276adae2/">hexo+github建github.io</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>安装hexo+连接github, 请看<a target="_blank" rel="noopener" href="https://b4night-resource-1312299157.cos.ap-nanjing.myqcloud.com/hexo%2Bgithub%20tutorial.pdf">pdf</a>, 来自B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Eg41157tL/?spm_id_from=333.1007.0.0&vd_source=206601f18ddc5959ab706d3c75f872e6">教程</a></p>
+<p>以下是如何将joplin文档通过joplin-blog这个插件发布</p>
+<ol>
+<li>npm install -g joplin-blog, 安装joplin-blog</li>
+<li>在hexo文件根目录下创建<code>.joplin-blog.json</code>, 并配置. 配置请看<a target="_blank" rel="noopener" href="https://github.com/rxliuli/joplin-blog">github</a></li>
+<li>在当前目录下执行<code>npx joplin-blog export</code>, 自动将配置文件中对应标签的文档载入到<code>/source/_posts/</code>文件夹中, 之后这些文档会被上传</li>
+<li><code>hexo g &amp; hexo d</code>. 自动上传到github</li>
+</ol>
+<p>可以通过一个脚本来执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /home/fc/Projects/b4night.github.io/webPage</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">路径需要改成你的hexo项目的路径</span></span><br><span class="line"></span><br><span class="line">npx joplin-blog export</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line"></span><br><span class="line">cd -</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/02/9481b1590a2e4c0ca4a9fb92276adae2/" data-id="cljz93so30004yst838x8d5u3" data-title="hexo+github建github.io" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-d90a42c1c8a94266b86e69b48a7384d4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/02/d90a42c1c8a94266b86e69b48a7384d4/" class="article-date">
+  <time class="dt-published" datetime="2023-07-01T16:18:53.172Z" itemprop="datePublished">2023-07-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/02/d90a42c1c8a94266b86e69b48a7384d4/">ubuntu22.04 Ulauncher在desktop按hotkey不显示</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://github.com/Ulauncher/Ulauncher/wiki/Hotkey-In-Wayland">参考文档</a></p>
+<ul>
+<li>Install package <code>wmctrl</code> (needed to activate app focus)</li>
+<li>Open Ulauncher Preferences and set hotkey to something you’ll never use</li>
+<li>Open <code>Settings &gt; Keyboard</code> (may be named “Keyboard Shortcuts”), then scroll down to <code>Customize Shortcuts &gt; Custom Shortcuts &gt; +</code></li>
+<li>In Command enter <code>ulauncher-toggle</code>, set name and shortcut, then click Add</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/02/d90a42c1c8a94266b86e69b48a7384d4/" data-id="cljz93so8000hyst80m7tdmum" data-title="ubuntu22.04 Ulauncher在desktop按hotkey不显示" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-d6db786ef31c441989edc180c061b316" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/22/d6db786ef31c441989edc180c061b316/" class="article-date">
+  <time class="dt-published" datetime="2023-02-21T16:44:27.186Z" itemprop="datePublished">2023-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/22/d6db786ef31c441989edc180c061b316/">linux换源</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>ubuntu的软件源配置文件在<code>/etc/apt/sources.list</code></p>
+<h1 id="备份配置文件"><a href="#备份配置文件" class="headerlink" title="备份配置文件"></a>备份配置文件</h1><pre><code>sudo cp  /etc/apt/sources.list /etc/apt/sources.list.bak
+</code></pre>
+<h1 id="打开文件并修改"><a href="#打开文件并修改" class="headerlink" title="打开文件并修改"></a>打开文件并修改</h1><pre><code>sudo vim /etc/apt/sources.list
+</code></pre>
+<p>在文件最后加上</p>
+<pre><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/22/d6db786ef31c441989edc180c061b316/" data-id="cljz93so7000cyst8c7mg3grj" data-title="linux换源" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-e1f7523430cf47f0be50354a319c4f6b" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/22/e1f7523430cf47f0be50354a319c4f6b/" class="article-date">
+  <time class="dt-published" datetime="2023-02-21T16:16:43.677Z" itemprop="datePublished">2023-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/22/e1f7523430cf47f0be50354a319c4f6b/">wsl安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>搜索<code>启用或关闭windows功能</code><br>勾选如下<br><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230222002251819.png" alt="image-20230222002251819"></li>
+<li>打开<code>microsoft store</code>，搜索wsl，选一个linux版本下载</li>
+<li>下载完成后打开，如果遇到下列问题<br><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230222002337197.png" alt="image-20230222002337197"><br>则到<a target="_blank" rel="noopener" href="https://aka.ms/wsl2kernel%E4%B8%8B%E8%BD%BD%60Linux">https://aka.ms/wsl2kernel下载`Linux</a> kernal update package`</li>
+<li>在vscode中安装插件<code>wsl</code>即可</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/22/e1f7523430cf47f0be50354a319c4f6b/" data-id="cljz93soa000nyst8e9gr4gm3" data-title="wsl安装" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-60714f5536694edf9a75e45987188137" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/02/05/60714f5536694edf9a75e45987188137/" class="article-date">
+  <time class="dt-published" datetime="2023-02-05T07:48:21.114Z" itemprop="datePublished">2023-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/02/05/60714f5536694edf9a75e45987188137/">解决obs画质低</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230205154905574.png" alt="image-20230205154905574"></p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230205154912805.png" alt="image-20230205154912805"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/02/05/60714f5536694edf9a75e45987188137/" data-id="cljz93snz0001yst8cuck37u7" data-title="解决obs画质低" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-b8577a10f80843768f2440e2dbc6d12e" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/20/b8577a10f80843768f2440e2dbc6d12e/" class="article-date">
+  <time class="dt-published" datetime="2023-01-20T09:00:02.218Z" itemprop="datePublished">2023-01-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/20/b8577a10f80843768f2440e2dbc6d12e/">ubuntu22.04缩短命令提示符信息</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230120170058182.png" alt="image-20230120170058182"></p>
+<p>效果如上</p>
+<p>方法:</p>
+<p>用vim打开<code>~/.bashrc</code></p>
+<p>找到如下的行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$color_prompt&quot; = yes ]; then</span><br><span class="line">    PS1=&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &#x27;</span><br><span class="line">else</span><br><span class="line">    PS1=&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\u@\h:\w\$ &#x27;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>Remove the <code>@\h</code>, and replace the <code>\w</code> with an uppercase <code>\W</code>, so that it becomes:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$color_prompt&quot; = yes ]; then</span><br><span class="line">    PS1=&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ &#x27;</span><br><span class="line">else</span><br><span class="line">    PS1=&#x27;$&#123;debian_chroot:+($debian_chroot)&#125;\u:\W\$ &#x27;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>参考链接: <a target="_blank" rel="noopener" href="https://askubuntu.com/questions/145618/how-can-i-shorten-my-command-line-bash-prompt">stackoverflow</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/20/b8577a10f80843768f2440e2dbc6d12e/" data-id="cljz93so50006yst82sro6spt" data-title="ubuntu22.04缩短命令提示符信息" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-551de9c0ea134fcfa215cc2746c5b476" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/17/551de9c0ea134fcfa215cc2746c5b476/" class="article-date">
+  <time class="dt-published" datetime="2023-01-17T07:20:25.244Z" itemprop="datePublished">2023-01-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/17/551de9c0ea134fcfa215cc2746c5b476/">typora修改字体</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>以<code>Github</code>主题为例子</p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117152100119.png" alt="image-20230117152100119"></p>
+<p>打开主题文件夹, 找到<code>github.css</code>并打开修改</p>
+<p>找到<code>font-fanily: &#39;...&#39;</code>这个部分, 将<code>...</code>修改为想要的字体即可</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/17/551de9c0ea134fcfa215cc2746c5b476/" data-id="cljz93snv0000yst88qyp5cc9" data-title="typora修改字体" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-aef4bfec1b4c41a29380e459e4d41095" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/17/aef4bfec1b4c41a29380e459e4d41095/" class="article-date">
+  <time class="dt-published" datetime="2023-01-17T06:53:17.801Z" itemprop="datePublished">2023-01-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/17/aef4bfec1b4c41a29380e459e4d41095/">vscode连接到linux+免密登录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h1><p>首先在linux中下载openssh-server</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>在vscode中下载完相关的插件</p>
+<h1 id="配置ssh插件"><a href="#配置ssh插件" class="headerlink" title="配置ssh插件"></a>配置ssh插件</h1><p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150723309.png" alt="image-20230117150723309"></p>
+<p>打开<code>.ssh\config</code>这个文件夹</p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150804581.png" alt="image-20230117150804581"></p>
+<p>从上往下分别是: 服务器的别名, ip, 登陆的用户名, 端口. 最后一个是用于免密登录的密钥</p>
+<h1 id="免密登录"><a href="#免密登录" class="headerlink" title="免密登录"></a>免密登录</h1><p>打开cmd, 输入<code>ssh-keygen -t rsa -b 4096</code>生成公钥和密钥</p>
+<p>生成的两把会在<code>C:\Users\userName\.ssh</code>中</p>
+<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150937912.png" alt="image-20230117150937912"></p>
+<p>将<code>id_rsa.pub</code>上传到服务器的<code>~/.ssh</code>文件夹下, 并改名为<code>authorized_keys</code></p>
+<p>在config中加上<code>IdentifyFile &quot;密钥地址&quot;</code>即可实现免密访问</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/17/aef4bfec1b4c41a29380e459e4d41095/" data-id="cljz93so40005yst8axocdte3" data-title="vscode连接到linux+免密登录" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
     </footer>
   </div>
   
@@ -131,18 +618,39 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
     </div>
   </div>
 
@@ -155,7 +663,23 @@
       <ul>
         
           <li>
-            <a href="/2023/07/12/hello-world/">Hello World</a>
+            <a href="/2023/07/03/bad6f5d9c82f4be8ab541b01f3077f91/">通过vlan使不同设备互联</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/">git通过ssh和github通信</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/02/9481b1590a2e4c0ca4a9fb92276adae2/">hexo+github建github.io</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/02/d90a42c1c8a94266b86e69b48a7384d4/">ubuntu22.04 Ulauncher在desktop按hotkey不显示</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/22/d6db786ef31c441989edc180c061b316/">linux换源</a>
           </li>
         
       </ul>
