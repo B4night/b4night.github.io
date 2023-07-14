@@ -113,12 +113,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -139,6 +139,111 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://b4night.github.io/2023/07/14/e96a9907bbdc4191b098c110833e70bd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="B4night">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="B4night's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | B4night's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/07/14/e96a9907bbdc4191b098c110833e70bd/" class="post-title-link" itemprop="url">cmake教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-07-14 11:13:40 / Modified: 15:24:30" itemprop="dateCreated datePublished" datetime="2023-07-14T11:13:40+08:00">2023-07-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Tutorial/cmake/" itemprop="url" rel="index"><span itemprop="name">cmake</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><ol>
+<li>在项目根目录下创建<code>build/</code></li>
+<li>编写代码和<code>CMakeLists.txt</code></li>
+<li>进入到<code>build/</code>, 执行<code>cmake -S .. -B .</code></li>
+<li>执行<code>make</code></li>
+</ol>
+<h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>在<code>CMakeLists.txt</code>中编写如下代码</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">install</span>(TARGETS <span class="variable">$&#123;PROJECT_NAME&#125;</span> DESTINATION bin)</span><br></pre></td></tr></table></figure>
+
+<p>可以将可执行文件安装到<code>bin</code>中, 之后可以直接输入程序名就可以执行了</p>
+<h2 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h2><p>大致与基本流程相同</p>
+<ol>
+<li>进入到<code>build/</code>, 执行<code>cmake -S .. -B .</code></li>
+<li>执行<code>make install</code></li>
+</ol>
+<h1 id="Library"><a href="#Library" class="headerlink" title="Library"></a>Library</h1><h2 id="library的install"><a href="#library的install" class="headerlink" title="library的install"></a>library的install</h2><p><code>CMakeLists.txt</code>文件如下</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">2.8</span>)</span><br><span class="line"><span class="keyword">project</span>(libtest)</span><br><span class="line"><span class="keyword">add_library</span>(libtest header.cpp)</span><br><span class="line"><span class="keyword">set_target_properties</span>(libtest PROPERTIES PUBLIC_HEADER header.h)</span><br><span class="line"><span class="keyword">install</span>(TARGETS libtest DESTINATION /home/fc/libs/</span><br><span class="line">        PUBLIC_HEADER DESTINATION /home/fc/<span class="keyword">include</span></span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+
+<p>执行<code>make install</code>后会将<code>liblibtest.a</code>安装到<code>/home/fc/libs/</code>目录下, 会将头文件<code>header.h</code>安装到<code>/home/fc/include</code>目录下</p>
+<h2 id="project中链接库"><a href="#project中链接库" class="headerlink" title="project中链接库"></a>project中链接库</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.22</span>.<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(<span class="keyword">TEST</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> main.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(/home/fc/<span class="keyword">include</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用库文件的完整路径</span></span><br><span class="line"><span class="keyword">link_directories</span>(/home/fc/libs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 链接到libtest库</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> /home/fc/libtest)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>include_directories</code>和<code>link_directories</code>来添加路径</p>
+<p><strong>注意</strong>: 在<code>target_link_libraries</code>中, 如果库不在标准的地方, 如<code>/usr/local/lib</code>中, 需要写库的绝对路径</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -928,103 +1033,6 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 <p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117152100119.png" alt="image-20230117152100119"></p>
 <p>打开主题文件夹, 找到<code>github.css</code>并打开修改</p>
 <p>找到<code>font-fanily: &#39;...&#39;</code>这个部分, 将<code>...</code>修改为想要的字体即可</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://b4night.github.io/2023/01/17/aef4bfec1b4c41a29380e459e4d41095/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="B4night">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="B4night's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | B4night's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/17/aef4bfec1b4c41a29380e459e4d41095/" class="post-title-link" itemprop="url">vscode连接到linux+免密登录</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-01-17 14:53:17" itemprop="dateCreated datePublished" datetime="2023-01-17T14:53:17+08:00">2023-01-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-08 13:50:41" itemprop="dateModified" datetime="2023-04-08T13:50:41+08:00">2023-04-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h1><p>首先在linux中下载openssh-server</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure>
-
-<p>在vscode中下载完相关的插件</p>
-<h1 id="配置ssh插件"><a href="#配置ssh插件" class="headerlink" title="配置ssh插件"></a>配置ssh插件</h1><p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150723309.png" alt="image-20230117150723309"></p>
-<p>打开<code>.ssh\config</code>这个文件夹</p>
-<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150804581.png" alt="image-20230117150804581"></p>
-<p>从上往下分别是: 服务器的别名, ip, 登陆的用户名, 端口. 最后一个是用于免密登录的密钥</p>
-<h1 id="免密登录"><a href="#免密登录" class="headerlink" title="免密登录"></a>免密登录</h1><p>打开cmd, 输入<code>ssh-keygen -t rsa -b 4096</code>生成公钥和密钥</p>
-<p>生成的两把会在<code>C:\Users\userName\.ssh</code>中</p>
-<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230117150937912.png" alt="image-20230117150937912"></p>
-<p>将<code>id_rsa.pub</code>上传到服务器的<code>~/.ssh</code>文件夹下, 并改名为<code>authorized_keys</code></p>
-<p>在config中加上<code>IdentifyFile &quot;密钥地址&quot;</code>即可实现免密访问</p>
 
       
     </div>
