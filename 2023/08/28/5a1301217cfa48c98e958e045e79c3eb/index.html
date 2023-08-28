@@ -19,32 +19,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"b4night.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="系统为ubuntu22.04 ssh创建密钥terminal输入ssh -keygen -t rsa -C &quot;your email&quot;, 之后都默认回车即可 执行完毕后可以在~&#x2F;.ssh&#x2F;中看到如下文件  将公钥上传至githubgithub主页点击头像, 选择setting 在侧边栏找到SSH and GPG keys, 点击New SSH key  将id_rsa.pub中的">
+    <meta name="description" content="设置代理12export HTTP_PROXY&#x3D;http:&#x2F;&#x2F;localhost:7890export HTTPS_PROXY&#x3D;https:&#x2F;&#x2F;localhost:7890  取消代理12git config --global http.proxy http:&#x2F;&#x2F;localhost:7890git config --global https.proxy https:&#x2F;&#x2F;localhost:7890">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git通过ssh和github通信">
-<meta property="og:url" content="https://b4night.github.io/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/index.html">
+<meta property="og:title" content="git设置代理和取消代理">
+<meta property="og:url" content="https://b4night.github.io/2023/08/28/5a1301217cfa48c98e958e045e79c3eb/index.html">
 <meta property="og:site_name" content="B4night&#39;s Blog">
-<meta property="og:description" content="系统为ubuntu22.04 ssh创建密钥terminal输入ssh -keygen -t rsa -C &quot;your email&quot;, 之后都默认回车即可 执行完毕后可以在~&#x2F;.ssh&#x2F;中看到如下文件  将公钥上传至githubgithub主页点击头像, 选择setting 在侧边栏找到SSH and GPG keys, 点击New SSH key  将id_rsa.pub中的">
+<meta property="og:description" content="设置代理12export HTTP_PROXY&#x3D;http:&#x2F;&#x2F;localhost:7890export HTTPS_PROXY&#x3D;https:&#x2F;&#x2F;localhost:7890  取消代理12git config --global http.proxy http:&#x2F;&#x2F;localhost:7890git config --global https.proxy https:&#x2F;&#x2F;localhost:7890">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703171627347.png">
-<meta property="og:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703171824784.png">
-<meta property="og:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703172153060.png">
-<meta property="article:published_time" content="2023-07-03T09:11:30.343Z">
-<meta property="article:modified_time" content="2023-07-03T09:22:08.090Z">
+<meta property="article:published_time" content="2023-08-28T01:10:05.128Z">
+<meta property="article:modified_time" content="2023-08-28T01:15:42.011Z">
 <meta property="article:author" content="B4night">
-<meta property="article:tag" content="tutorial">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703171627347.png">
 
 
-<link rel="canonical" href="https://b4night.github.io/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/">
+<link rel="canonical" href="https://b4night.github.io/2023/08/28/5a1301217cfa48c98e958e045e79c3eb/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://b4night.github.io/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/","path":"2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/","title":"git通过ssh和github通信"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://b4night.github.io/2023/08/28/5a1301217cfa48c98e958e045e79c3eb/","path":"2023/08/28/5a1301217cfa48c98e958e045e79c3eb/","title":"git设置代理和取消代理"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>git通过ssh和github通信 | B4night's Blog</title>
+<title>git设置代理和取消代理 | B4night's Blog</title>
   
 
 
@@ -110,7 +105,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh%E5%88%9B%E5%BB%BA%E5%AF%86%E9%92%A5"><span class="nav-number">1.</span> <span class="nav-text">ssh创建密钥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%86%E5%85%AC%E9%92%A5%E4%B8%8A%E4%BC%A0%E8%87%B3github"><span class="nav-number">2.</span> <span class="nav-text">将公钥上传至github</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">git配置</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">设置代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%96%E6%B6%88%E4%BB%A3%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">取消代理</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,7 +154,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://b4night.github.io/2023/07/03/e6155c8fe28d481c983023a3f5d9d10c/">
+    <link itemprop="mainEntityOfPage" href="https://b4night.github.io/2023/08/28/5a1301217cfa48c98e958e045e79c3eb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -172,12 +167,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="git通过ssh和github通信 | B4night's Blog">
+      <meta itemprop="name" content="git设置代理和取消代理 | B4night's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          git通过ssh和github通信
+          git设置代理和取消代理
         </h1>
 
         <div class="post-meta-container">
@@ -189,7 +184,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-07-03 17:11:30 / Modified: 17:22:08" itemprop="dateCreated datePublished" datetime="2023-07-03T17:11:30+08:00">2023-07-03</time>
+      <time title="Created: 2023-08-28 09:10:05 / Modified: 09:15:42" itemprop="dateCreated datePublished" datetime="2023-08-28T09:10:05+08:00">2023-08-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -210,19 +205,11 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>系统为<code>ubuntu22.04</code></p>
-<h1 id="ssh创建密钥"><a href="#ssh创建密钥" class="headerlink" title="ssh创建密钥"></a>ssh创建密钥</h1><p>terminal输入<code>ssh -keygen -t rsa -C &quot;your email&quot;</code>, 之后都默认回车即可</p>
-<p>执行完毕后可以在<code>~/.ssh/</code>中看到如下文件</p>
-<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703171627347.png" alt="image-20230703171627347"></p>
-<h1 id="将公钥上传至github"><a href="#将公钥上传至github" class="headerlink" title="将公钥上传至github"></a>将公钥上传至github</h1><p>github主页点击头像, 选择<code>setting</code></p>
-<p>在侧边栏找到<code>SSH and GPG keys</code>, 点击<code>New SSH key</code></p>
-<p><img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703171824784.png" alt="image-20230703171824784"></p>
-<p>将<code>id_rsa.pub</code>中的公钥复制到<code>Key</code>中, <strong>注意公钥后面的邮箱不要复制</strong></p>
-<h1 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h1><p>首先设置用户名和邮箱, <strong>注意这里的邮箱和ssh -keygen里面的邮箱一样</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;your.email@example.com&quot;</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><h1 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HTTP_PROXY=http://localhost:7890</span><br><span class="line">export HTTPS_PROXY=https://localhost:7890</span><br></pre></td></tr></table></figure>
 
-<p>然后通过ssh来git clone</p>
-<img src="https://joplin-imgbed-1312299157.cos.ap-nanjing.myqcloud.com/image-20230703172153060.png" alt="image-20230703172153060" style="zoom:50%;" />
+<h1 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://localhost:7890</span><br><span class="line">git config --global https.proxy https://localhost:7890</span><br></pre></td></tr></table></figure>
+
+<p>这些命令会对全局的 Git 仓库起作用。如果你只想为某一个特定的仓库设置代理，可以在该仓库目录中执行上述命令，但去掉 <code>--global</code> 选项。</p>
 
     </div>
 
@@ -231,22 +218,16 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/tutorial/" rel="tag"># tutorial</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/07/02/9481b1590a2e4c0ca4a9fb92276adae2/" rel="prev" title="hexo+github建github.io">
-                  <i class="fa fa-chevron-left"></i> hexo+github建github.io
+                <a href="/2023/08/10/62086c45110445fcba7e39f1971414a9/" rel="prev" title="使用zotero插件zotero PDF Translate和腾讯云来阅读论文">
+                  <i class="fa fa-chevron-left"></i> 使用zotero插件zotero PDF Translate和腾讯云来阅读论文
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/07/03/bad6f5d9c82f4be8ab541b01f3077f91/" rel="next" title="通过vlan使不同设备互联">
-                  通过vlan使不同设备互联 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
